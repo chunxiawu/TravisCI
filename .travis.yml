@@ -5,6 +5,9 @@ branches:
   - master
 install:
   - nuget restore TravisCI.sln
+# script:
+  # - msbuild /p:Configuration=Release TravisCI.sln
+
 script:
   - msbuild /p:Configuration=Release TravisCI.sln
-
+  - mono ./packages/NUnit.ConsoleRunner.*/tools/nunit3-console.exe ./Tests/bin/Release/Tests.dll
